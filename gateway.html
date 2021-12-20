@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="icon" type="image/x-icon" href="logo.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <title>WMBUS Registering Tool</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo 2">
+
+</head>
+
+
+<body>
+
+    <div class="topnav">
+        <a class="active" href="main.html" style="padding: 0px 0px;"> <img src="northqres.png"></a>
+        <a href="house.html">Create house</a>
+        <a href="gateway.html">Register gateway</a>
+        <a href="device.html">Register device</a>
+        <a style="float: right" href="index.html">Log out</a>
+    </div>
+
+
+
+    <div class="container">
+        <br><br><br>
+
+        <div class="form-group">
+            <label for="username">Serial number:</label>
+            <input type="text" name="SN" id="GWSerial" class="form-control" placeholder="Enter SN">
+        </div>
+
+        <button onclick="RegisterGateway() " class="btn btn-primary">Register GW</button>
+
+    </div>
+
+    <div class="center">
+        <img src="Q.png">
+    </div>
+
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script>
+        var token = sessionStorage.token;
+        var houseID = sessionStorage.houseID;
+
+
+        function RegisterGateway() {
+            console.log(houseID);
+            GWSerial = document.getElementById('GWSerial').value
+            $.post("https://hub.northq.com/api/v1/houses/" + houseID + "/register/wmbus/gateway/",
+                { "access_token": token, "serial_number": GWSerial }
+            ).done(function (data) {
+                console.log(data);
+            })
+        }
+
+    </script>
+
+</body>
+
+</html>

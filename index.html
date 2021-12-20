@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="icon" type="image/x-icon" href="logo.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>WMBUS Registering Tool</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo 2">
+
+</head>
+
+
+<body>
+    <div class="header">
+        <div class="container-fluid" style="background-color: #0077e8;" style="color: white;">
+            <div class="col-sm" style="color: white;">
+                <h1>NorthQ</h1>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="container">
+        <br><br><br>
+
+        <img src="logo.png" class="mx-auto d-block" style="width:20%">
+        <br><br>
+        <div class="form-group">
+            <label for="username">Email:</label>
+            <input type="email" class="form-control" id="username" placeholder="Enter email" name="user">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter password" name="pass">
+        </div>
+
+        <button onclick="Authenticate()" class="btn btn-primary">Log In</button>
+
+    </div>
+
+
+
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script src="script.js"></script>
+
+    <script>
+        var token;
+        var houseID;
+        function Authenticate() {
+            user = document.getElementById('username').value
+            pass = document.getElementById('password').value
+            clientID = "rfzoKZGqweJu8bVcuTBs7btx1G2vQEX605tyhHdr"
+
+            $.post("https://hub.northq.com/o/token/",
+                { "username": user, "password": pass, "client_id": clientID, "grant_type": "password" })
+                .done(function (data) {
+                    token = data.access_token;
+                    console.log(token);
+                    sessionStorage.setItem("token", data.access_token)
+                    window.location.href = "main.html";
+                })
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

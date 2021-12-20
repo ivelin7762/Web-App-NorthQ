@@ -1,0 +1,53 @@
+body {
+    background-color: #f5f4f4;
+    margin: 0;
+  }
+  .header {
+    padding: 20px;
+    text-align: center;
+    background: #0077e8;
+    color: white;
+    font-family: "Exo 2", sans-serif;
+  }
+
+  body {
+      margin: 0;
+      font-family: "Exo 2", sans-serif  }
+
+  .topnav {
+      overflow: hidden;
+      background-color: #0077e8;
+      font-family: "Exo 2", sans-serif
+  }
+
+  .topnav a {
+      float: left;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      font-family: "Exo 2", sans-serif
+  }
+
+  
+  .topnav a:hover {
+      background-color: white;
+      color: black;
+      font-family: "Exo 2", sans-serif
+  }
+
+  .topnav a.active {
+      background-color: white;
+      color: white;
+      font-family: "Exo 2", sans-serif
+  }
+
+  .container { 
+    font-family: "Exo 2", sans-serif
+  }
+
+  .center{
+    text-align: center;
+    margin-top: 150px;
+  }
